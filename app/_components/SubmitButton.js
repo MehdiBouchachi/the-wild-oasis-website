@@ -13,5 +13,5 @@ export default function SubmitButton({ children, pendingLabel }) {
   );
 }
 SubmitButton.defaultProps = {
-  UpdatingLabel: "Updating...",
+  pendingLabel: "Updating...",
 };
