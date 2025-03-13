@@ -2,7 +2,7 @@ import "@/app/_styles/globals.css";
 import Header from "@/app/_components/Header";
 import { Josefin_Sans } from "next/font/google";
 import { ReservationProvider } from "./_components/ReservationContext";
-
+import Footer from "./_components/Footer";
 const josefin = Josefin_Sans({
   subsets: ["latin"],
   display: "swap",
@@ -29,7 +29,7 @@ export default function RootLayout({ children }) {
             <ReservationProvider>{children}</ReservationProvider>
           </main>
         </div>
-        <footer>Copyrights by The Wild Oasis</footer>
+        <Footer />
       </body>
     </html>
   );

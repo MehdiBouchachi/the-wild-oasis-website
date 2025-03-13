@@ -36,6 +36,25 @@ module.exports = {
           950: "var(--accent-950)",
         },
       },
+      keyframes: {
+        flutterIn: {
+          "0%": {
+            transform: "translate(-100%, -100%) rotate(-20deg) scale(1.5)",
+            opacity: "0",
+          },
+          "60%": {
+            transform: "translate(10%, 10%) rotate(5deg) scale(1.1)",
+            opacity: "1",
+          },
+          "100%": {
+            transform: "translate(0, 0) rotate(0deg) scale(1)",
+            opacity: "1",
+          },
+        },
+      },
+      animation: {
+        "flutter-in": "flutterIn 2.5s ease-out forwards",
+      },
     },
   },
   plugins: [],
