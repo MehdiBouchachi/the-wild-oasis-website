@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { updateGuest } from "../_lib/actions";
 import SubmitButton from "./SubmitButton";
 import gsap from "gsap";
@@ -24,7 +24,7 @@ function UpdateProfileForm({ children, guest }) {
           opacity: 1,
           duration: 0.8,
           stagger: 0.3,
-          delay: 0.6, // 👈 Add this delay
+          delay: 0.6,
           ease: "power3.out",
           scrollTrigger: {
             trigger: formRef.current,
@@ -39,8 +39,8 @@ function UpdateProfileForm({ children, guest }) {
   return (
     <form
       ref={formRef}
-      className="bg-primary-900 py-8 px-12 text-lg flex gap-6 flex-col"
       action={updateGuest}
+      className="bg-primary-900 py-6 px-4 sm:px-8 md:px-12 text-base sm:text-lg flex flex-col gap-6"
     >
       <div className="space-y-2 form-animate">
         <label>Full name</label>
@@ -48,7 +48,7 @@ function UpdateProfileForm({ children, guest }) {
           name="fullName"
           disabled
           defaultValue={fullName}
-          className="px-5 py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm disabled:cursor-not-allowed disabled:bg-gray-600 disabled:text-gray-400"
+          className="px-4 py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm disabled:cursor-not-allowed disabled:bg-gray-600 disabled:text-gray-400"
         />
       </div>
 
@@ -58,7 +58,7 @@ function UpdateProfileForm({ children, guest }) {
           name="email"
           defaultValue={email}
           disabled
-          className="px-5 py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm disabled:cursor-not-allowed disabled:bg-gray-600 disabled:text-gray-400"
+          className="px-4 py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm disabled:cursor-not-allowed disabled:bg-gray-600 disabled:text-gray-400"
         />
       </div>
 
@@ -80,7 +80,7 @@ function UpdateProfileForm({ children, guest }) {
         <input
           defaultValue={nationalID}
           name="nationalID"
-          className="px-5 py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm"
+          className="px-4 py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm"
         />
       </div>
 

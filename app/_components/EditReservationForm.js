@@ -1,4 +1,5 @@
 "use client";
+
 import { useEffect, useRef } from "react";
 import { updateBooking } from "../_lib/actions";
 import SubmitButton from "./SubmitButton";
@@ -38,7 +39,7 @@ function EditReservationForm({ reservationId, booking, maxCapacity }) {
     <form
       ref={formRef}
       action={updateBooking}
-      className="bg-primary-900 py-8 px-12 text-lg flex gap-6 flex-col"
+      className="bg-primary-900 py-6 px-4 sm:px-8 md:px-12 text-base sm:text-lg flex flex-col gap-6"
     >
       <input type="hidden" value={reservationId} name="reservationId" />
 
@@ -48,7 +49,7 @@ function EditReservationForm({ reservationId, booking, maxCapacity }) {
           name="numGuests"
           id="numGuests"
           defaultValue={numGuests}
-          className="px-5 py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm"
+          className="px-4 py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm"
           required
         >
           <option value="">Select number of guests...</option>
@@ -67,7 +68,7 @@ function EditReservationForm({ reservationId, booking, maxCapacity }) {
         <textarea
           name="observations"
           defaultValue={observations}
-          className="px-5 py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm"
+          className="px-4 py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm"
         />
       </div>
 

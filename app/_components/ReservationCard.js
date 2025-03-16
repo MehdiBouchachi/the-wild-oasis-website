@@ -82,7 +82,7 @@ function ReservationCard({ booking, onDelete }) {
           <>
             <Link
               href={`/account/reservations/edit/${id}`}
-              className="group flex items-center justify-center gap-1 uppercase text-xs font-bold text-primary-300 border-r md:border-r-0 md:border-b border-primary-800 px-3 py-2 md:py-3 hover:bg-accent-600 hover:text-primary-900 transition-colors w-full"
+              className="group flex items-center justify-center gap-1 uppercase text-[10px] sm:text-xs font-bold text-primary-300 border-r md:border-r-0 md:border-b border-primary-800 px-3 py-2 md:py-3 hover:bg-accent-600 hover:text-primary-900 transition-colors w-full"
             >
               <PencilSquareIcon className="h-5 w-5 text-primary-600 group-hover:text-primary-900 transition-colors" />
               <span>Edit</span>
