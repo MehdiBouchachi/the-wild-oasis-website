@@ -40,21 +40,27 @@
 }
 
 /* For data picker */
-
 .rdp {
   --rdp-cell-size: 32px !important;
   --rdp-accent-color: theme("colors.accent.500") !important;
   --rdp-background-color: theme("colors.accent.600") !important;
   margin: 0 !important;
+  font-size: 1rem;
 }
+
 @media (max-width: 768px) {
   .rdp {
-    --rdp-cell-size: 28px !important; /* Smaller cells */
-    font-size: 0.825rem; /* Slightly smaller text (between base and sm) */
+    --rdp-cell-size: 24px !important; /* Better balance than 20px */
+    font-size: 0.75rem; /* Sm text (12px) */
+  }
+
+  .rdp-months {
+    flex-direction: column;
+    gap: 1rem;
   }
 
   .rdp-caption_label {
-    font-size: 0.875rem; /* Optional: reduce month label */
+    font-size: 0.625rem; /* Smaller month name */
   }
 
   .rdp-nav_button {
@@ -62,7 +68,16 @@
   }
 
   .rdp-day {
-    padding: 0.25rem 0.4rem;
+    padding: 0.25rem 0.35rem;
+  }
+
+  .rdp-table {
+    margin-inline: auto;
+  }
+
+  .rdp-head_cell {
+    font-size: 0.5rem;
+    padding: 0.25rem 0;
   }
 }
 

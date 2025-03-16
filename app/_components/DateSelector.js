@@ -53,9 +53,9 @@ function DateSelector({ settings, cabin, bookedDates }) {
         />
       </div>
 
-      <div className="flex flex-wrap justify-between items-center gap-4 px-6 md:px-8 py-4 bg-accent-500 text-primary-800 text-base md:text-xl">
-        <div className="flex flex-wrap items-baseline gap-3">
-          <p className="flex gap-2 items-baseline">
+      <div className="flex justify-between items-center flex-wrap gap-x-2 gap-y-2 px-4 sm:px-6 py-4 bg-accent-500 text-primary-800 text-sm sm:text-base md:text-xl">
+        <div className="flex flex-wrap items-baseline gap-2">
+          <p className="flex gap-1 items-baseline">
             {discount > 0 ? (
               <>
                 <span className="text-xl md:text-2xl">
@@ -71,25 +71,24 @@ function DateSelector({ settings, cabin, bookedDates }) {
             <span>/night</span>
           </p>
 
-          {numNights ? (
+          {numNights && (
             <>
-              <p className="bg-accent-600 px-2 py-1 text-sm md:text-base rounded-sm">
+              <p className="bg-accent-600 px-2 py-1 text-xs sm:text-sm rounded-sm">
                 × {numNights}
               </p>
-              <p className="text-sm md:text-base">
+              <p className="text-xs sm:text-sm">
                 <span className="font-bold uppercase">Total</span>{" "}
-                <span className="text-lg md:text-xl font-semibold">
+                <span className="text-base md:text-xl font-semibold">
                   ${cabinPrice}
                 </span>
               </p>
             </>
-          ) : null}
+          )}
         </div>
 
-        {/* Clear button: inline right */}
         {range.from || range.to ? (
           <button
-            className="border border-primary-800 py-2 px-4 text-xs md:text-sm font-semibold whitespace-nowrap"
+            className="border border-primary-800 px-3 py-1.5 text-xs sm:text-sm font-semibold whitespace-nowrap"
             onClick={resetRange}
           >
             Clear
