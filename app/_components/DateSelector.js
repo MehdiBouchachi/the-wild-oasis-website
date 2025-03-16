@@ -8,6 +8,7 @@ import {
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
 import { useReservation } from "./ReservationContext";
+import { useIsMobile } from "../_lib/useIsMobile";
 
 function isAlreadyBooked(range, datesArr) {
   return (
@@ -21,7 +22,7 @@ function isAlreadyBooked(range, datesArr) {
 
 function DateSelector({ settings, cabin, bookedDates }) {
   const { range, setRange, resetRange } = useReservation();
-  // CHANGE
+  const isMobile = useIsMobile();
 
   const displayRange = isAlreadyBooked(range, bookedDates) ? {} : range;
   const numNights = differenceInDays(displayRange.to, displayRange.from);
@@ -45,7 +46,7 @@ function DateSelector({ settings, cabin, bookedDates }) {
           fromDate={new Date()}
           toYear={new Date().getFullYear() + 5}
           captionLayout="dropdown"
-          numberOfMonths={2}
+          numberOfMonths={isMobile ? 1 : 2}
           disabled={(curDate) =>
             isPast(curDate) ||
             bookedDates.some((date) => isSameDay(date, curDate))
