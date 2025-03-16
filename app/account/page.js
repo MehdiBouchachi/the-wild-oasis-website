@@ -10,7 +10,7 @@ export default async function Page() {
   const session = await auth();
   const firstName = session.user.name.split(" ").at(0);
 
-  const isButterflyUser = ["ouissem", "saidani", "malak", "mehdid"].includes(
+  const isButterflyUser = ["ouissem", "saidani", ].includes(
     firstName.toLowerCase()
   );
   const emoji = isButterflyUser ? "🦋" : "🌲";

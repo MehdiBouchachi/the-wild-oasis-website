@@ -8,6 +8,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      animationDelay: {
+        500: "500ms",
+      },
       colors: {
         primary: {
           50: "var(--primary-50)",
@@ -36,7 +39,22 @@ module.exports = {
           950: "var(--accent-950)",
         },
       },
+
       keyframes: {
+        moveInBottom: {
+          "0%": {
+            opacity: "0",
+            transform: "translateY(100px)",
+          },
+          "80%": {
+            transform: "translateY(-10px)",
+          },
+          "100%": {
+            opacity: "1",
+            transform: "translateY(0)",
+          },
+        },
+
         flutterIn: {
           "0%": {
             transform: "translate(-100%, -100%) rotate(-20deg) scale(1.5)",
@@ -53,7 +71,8 @@ module.exports = {
         },
       },
       animation: {
-        "flutter-in": "flutterIn 2.5s ease-out forwards",
+        "move-in-bottom": "moveInBottom 1s ease-out 0.75s both",
+        "move-in-bottom-delayed": "moveInBottom 1s ease-out 1.5s both",
       },
     },
   },

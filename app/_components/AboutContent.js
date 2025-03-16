@@ -1,28 +1,93 @@
-import AboutContent from "../_components/AboutContent";
-import { getCabins } from "../_lib/data-service";
+"use client";
 
-export const metadata = {
-  title: "About",
-};
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+import Image from "next/image";
+import about_1 from "@/public/about-1.jpg";
 
-export const revalidate = 86400;
+gsap.registerPlugin(ScrollTrigger);
 
-export default async function Page() {
-  const cabins = await getCabins();
+export default function AboutContent({ cabins }) {
+  const sectionRef = useRef(null);
 
-  return <AboutContent cabins={cabins} />;
-}
+  useEffect(() => {
+    const el = sectionRef.current;
 
-/* 
-export default async function Page() {
-  const cabins = await getCabins();
+    gsap.utils.toArray("h1").forEach((el) => {
+      gsap.fromTo(
+        el,
+        { opacity: 0, y: 40 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 85%",
+          },
+        }
+      );
+    });
+
+    gsap.fromTo(
+      "#welcome-text p",
+      { opacity: 0, y: 40 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "power3.out",
+        stagger: 0.2,
+        scrollTrigger: {
+          trigger: "#welcome-text",
+          start: "top 85%",
+        },
+      }
+    );
+
+    gsap.fromTo(
+      "#family-text p",
+      { opacity: 0, y: 40 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "power3.out",
+        stagger: 0.2,
+        scrollTrigger: {
+          trigger: "#family-text",
+          start: "top 85%",
+        },
+      }
+    );
+
+    gsap.fromTo(
+      "#family-text a",
+      { opacity: 0, y: 30 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: "#family-text a",
+          start: "top 90%",
+        },
+      }
+    );
+  }, []);
+
   return (
-    <div className="grid grid-cols-5 gap-x-24 gap-y-32 text-lg items-center">
-      <div className="col-span-3">
+    <div
+      ref={sectionRef}
+      className="grid grid-cols-5 gap-x-24 gap-y-32 text-lg items-center"
+    >
+      <div className="col-span-3" id="welcome-text">
         <h1 className="text-4xl mb-10 text-accent-400 font-medium">
           Welcome to The Wild Oasis
         </h1>
-
         <div className="space-y-8">
           <p>
             Where nature&apos;s beauty and comfortable living blend seamlessly.
@@ -53,9 +118,7 @@ export default async function Page() {
           alt="Family sitting around a fire pit in front of cabin"
         />
       </div>
-      {
-        // Technique : imagine a scenario where we upload the image from the database and we want to display it here, so we need to use the Image component from next/image to display the image from the database and we can't use the width and height attributes because we don't know the size of the image, so we use the aspect-square class to make the image square and we use the fill attribute to make the image fill the container and make the parent container relative to make the image absolute and we use the object-cover class to make the image cover the container.
-      }
+
       <div className="relative aspect-square col-span-2">
         <Image
           src="/about-2.jpg"
@@ -65,11 +128,10 @@ export default async function Page() {
         />
       </div>
 
-      <div className="col-span-3">
+      <div className="col-span-3" id="family-text">
         <h1 className="text-4xl mb-10 text-accent-400 font-medium">
           Managed by our family since 1962
         </h1>
-
         <div className="space-y-8">
           <p>
             Since 1962, The Wild Oasis has been a cherished family-run retreat.
@@ -99,4 +161,3 @@ export default async function Page() {
     </div>
   );
 }
- */
