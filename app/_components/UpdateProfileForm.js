@@ -1,20 +1,48 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { updateGuest } from "../_lib/actions";
-import { useFormStatus } from "react-dom";
 import SubmitButton from "./SubmitButton";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 function UpdateProfileForm({ children, guest }) {
-  const [count, setCount] = useState();
+  const formRef = useRef();
   const { fullName, email, nationality, nationalID, countryFlag } = guest;
+
+  useEffect(() => {
+    const elements = formRef.current?.querySelectorAll(".form-animate");
+
+    if (elements?.length) {
+      gsap.fromTo(
+        elements,
+        { y: 40, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.3,
+          delay: 0.6, // 👈 Add this delay
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: formRef.current,
+            start: "top 85%",
+            once: true,
+          },
+        }
+      );
+    }
+  }, []);
 
   return (
     <form
+      ref={formRef}
       className="bg-primary-900 py-8 px-12 text-lg flex gap-6 flex-col"
       action={updateGuest}
     >
-      <div className="space-y-2">
+      <div className="space-y-2 form-animate">
         <label>Full name</label>
         <input
           name="fullName"
@@ -24,7 +52,7 @@ function UpdateProfileForm({ children, guest }) {
         />
       </div>
 
-      <div className="space-y-2">
+      <div className="space-y-2 form-animate">
         <label>Email address</label>
         <input
           name="email"
@@ -34,7 +62,7 @@ function UpdateProfileForm({ children, guest }) {
         />
       </div>
 
-      <div className="space-y-2">
+      <div className="space-y-2 form-animate">
         <div className="flex items-center justify-between">
           <label htmlFor="nationality">Where are you from?</label>
           <img
@@ -44,11 +72,10 @@ function UpdateProfileForm({ children, guest }) {
             className="h-5 rounded-sm"
           />
         </div>
-
         {children}
       </div>
 
-      <div className="space-y-2">
+      <div className="space-y-2 form-animate">
         <label htmlFor="nationalID">National ID number</label>
         <input
           defaultValue={nationalID}
@@ -57,7 +84,7 @@ function UpdateProfileForm({ children, guest }) {
         />
       </div>
 
-      <div className="flex justify-end items-center gap-6">
+      <div className="flex justify-end items-center gap-6 form-animate">
         <SubmitButton>Update profile</SubmitButton>
       </div>
     </form>

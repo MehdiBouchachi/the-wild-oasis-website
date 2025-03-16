@@ -47,6 +47,24 @@
   --rdp-background-color: theme("colors.accent.600") !important;
   margin: 0 !important;
 }
+@media (max-width: 768px) {
+  .rdp {
+    --rdp-cell-size: 28px !important; /* Smaller cells */
+    font-size: 0.825rem; /* Slightly smaller text (between base and sm) */
+  }
+
+  .rdp-caption_label {
+    font-size: 0.875rem; /* Optional: reduce month label */
+  }
+
+  .rdp-nav_button {
+    padding: 0.25rem;
+  }
+
+  .rdp-day {
+    padding: 0.25rem 0.4rem;
+  }
+}
 
 :root {
   --primary-50: #e1e8ef;
@@ -99,4 +117,3 @@
   --accent-900: #f4ece1;
   --accent-950: #faf5f0;
 }
-

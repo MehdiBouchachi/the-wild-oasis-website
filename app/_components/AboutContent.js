@@ -5,6 +5,7 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import Image from "next/image";
 import about_1 from "@/public/about-1.jpg";
+import Link from "next/link";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -82,13 +83,14 @@ export default function AboutContent({ cabins }) {
   return (
     <div
       ref={sectionRef}
-      className="grid grid-cols-5 gap-x-24 gap-y-32 text-lg items-center"
+      className="grid grid-cols-5 gap-x-4 sm:gap-x-8 md:gap-x-16 lg:gap-x-24 gap-y-10 sm:gap-y-16 md:gap-y-24 text-sm sm:text-base md:text-lg items-center px-4 sm:px-6 md:px-10 py-12 sm:py-16 max-w-7xl mx-auto"
     >
-      <div className="col-span-3" id="welcome-text">
-        <h1 className="text-4xl mb-10 text-accent-400 font-medium">
+      {/* Welcome Text */}
+      <div className="col-span-5 lg:col-span-3 space-y-6" id="welcome-text">
+        <h1 className="text-xl sm:text-2xl md:text-4xl text-accent-400 font-semibold mb-4 sm:mb-6">
           Welcome to The Wild Oasis
         </h1>
-        <div className="space-y-8">
+        <div className="space-y-4 sm:space-y-6">
           <p>
             Where nature&apos;s beauty and comfortable living blend seamlessly.
             Hidden away in the heart of the Italian Dolomites, this is your
@@ -110,29 +112,33 @@ export default function AboutContent({ cabins }) {
         </div>
       </div>
 
-      <div className="col-span-2">
+      {/* Image 1 */}
+      <div className="col-span-5 lg:col-span-2 w-full h-auto">
         <Image
           src={about_1}
           placeholder="blur"
           quality={80}
           alt="Family sitting around a fire pit in front of cabin"
+          className="w-full h-auto object-cover "
         />
       </div>
 
-      <div className="relative aspect-square col-span-2">
+      {/* Image 2 */}
+      <div className="col-span-5 lg:col-span-2 relative aspect-square w-full">
         <Image
           src="/about-2.jpg"
           fill
-          className="object-cover"
+          className="object-cover "
           alt="Family that manages The Wild Oasis"
         />
       </div>
 
-      <div className="col-span-3" id="family-text">
-        <h1 className="text-4xl mb-10 text-accent-400 font-medium">
+      {/* Family Text */}
+      <div className="col-span-5 lg:col-span-3 space-y-6" id="family-text">
+        <h1 className="text-xl sm:text-2xl md:text-4xl text-accent-400 font-semibold mb-4 sm:mb-6">
           Managed by our family since 1962
         </h1>
-        <div className="space-y-8">
+        <div className="space-y-4 sm:space-y-6">
           <p>
             Since 1962, The Wild Oasis has been a cherished family-run retreat.
             Started by our grandparents, this haven has been nurtured with love
@@ -147,15 +153,15 @@ export default function AboutContent({ cabins }) {
             Wild Oasis soon, where tradition meets tranquility, and every visit
             is like coming home.
           </p>
+        </div>
 
-          <div>
-            <a
-              href="/cabins"
-              className="inline-block mt-4 bg-accent-500 px-8 py-5 text-primary-800 text-lg font-semibold hover:bg-accent-600 transition-all"
-            >
-              Explore our luxury cabins
-            </a>
-          </div>
+        <div>
+          <Link
+            href="/cabins"
+            className="inline-block mt-4 bg-accent-500 px-6 sm:px-8 py-4 sm:py-5 text-primary-800 text-base sm:text-lg font-semibold hover:bg-accent-600 transition-all"
+          >
+            Explore our luxury cabins
+          </Link>
         </div>
       </div>
     </div>

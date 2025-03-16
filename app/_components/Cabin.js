@@ -71,9 +71,11 @@ function Cabin({ cabin }) {
   return (
     <div
       ref={containerRef}
-      className="grid grid-cols-[3fr_4fr] gap-20 border border-primary-800 py-3 px-10 mb-24"
+      //grid grid-cols-[3fr_4fr] gap-20 border border-primary-800 py-3 px-10 mb-24
+      className="grid grid-cols-1 md:grid-cols-[3fr_4fr] gap-8 md:gap-20 border border-primary-800 py-6 md:py-3 px-4 md:px-10 mb-24 rounded-md md:rounded-none"
     >
-      <div className="relative  scale-[1.15] -translate-x-3">
+      {/* Image with mobile heading overlay */}
+      <div className="relative    aspect-[4/3] md:aspect-auto w-full md:scale-[1.15] md:-translate-x-3 mb-6 md:mb-0 rounded-md md:rounded-none overflow-hidden">
         <Image
           ref={imageRef}
           src={image}
@@ -81,37 +83,43 @@ function Cabin({ cabin }) {
           className="object-cover"
           alt={`Cabin ${name}`}
         />
+
+        {/* Heading for mobile on top of image */}
+        <h3
+          ref={nameRef}
+          className="absolute bottom-4 left-4 right-4 text-3xl font-black text-accent-100 bg-primary-950/80 px-4 py-2 rounded-md md:hidden"
+        >
+          Cabin {name}
+        </h3>
       </div>
 
+      {/* Content block */}
       <div>
-        <h3 className="text-accent-100 font-black text-7xl mb-5 translate-x-[-254px] bg-primary-950 p-6 pb-1 w-[150%]">
+        {/* Heading for desktop */}
+        <h3 className="hidden md:block text-6xl lg:text-7xl font-black text-accent-100 mb-5 md:translate-x-[-254px] bg-primary-950 p-6 pb-1 w-[150%] rounded-none">
           Cabin {name}
         </h3>
 
-        <p ref={descRef} className="text-lg text-primary-300 mb-10">
-          {" "}
-          <TextExpander>{description} </TextExpander>
+        <p
+          ref={descRef}
+          className="text-base md:text-lg text-primary-300 mb-6 md:mb-10 leading-relaxed"
+        >
+          <TextExpander>{description}</TextExpander>
         </p>
 
-        <ul className="flex flex-col gap-4 mb-7" ref={listRef}>
-          <li className="flex gap-3 items-center">
+        <ul className="flex flex-col gap-4 mb-6 md:mb-7" ref={listRef}>
+          <li className="flex gap-3 items-center text-md md:text-base">
             <UsersIcon className="h-5 w-5 text-primary-600" />
-            <span className="text-lg">
-              For up to <span className="font-bold">{maxCapacity}</span> guests
-            </span>
+            For up to <span className="font-bold">{maxCapacity}</span> guests
           </li>
-          <li className="flex gap-3 items-center">
+          <li className="flex gap-3 items-center text-md md:text-base">
             <MapPinIcon className="h-5 w-5 text-primary-600" />
-            <span className="text-lg">
-              Located in the heart of the{" "}
-              <span className="font-bold">Dolomites</span> (Italy)
-            </span>
+            Located in the heart of the{" "}
+            <span className="font-bold">Dolomites</span> (Italy)
           </li>
-          <li className="flex gap-3 items-center">
+          <li className="flex gap-3 items-center text-md md:text-base">
             <EyeSlashIcon className="h-5 w-5 text-primary-600" />
-            <span className="text-lg">
-              Privacy <span className="font-bold">100%</span> guaranteed
-            </span>
+            Privacy <span className="font-bold">100%</span> guaranteed
           </li>
         </ul>
       </div>
@@ -120,3 +128,51 @@ function Cabin({ cabin }) {
 }
 
 export default Cabin;
+/* 
+<div
+ref={containerRef}
+className="grid grid-cols-[3fr_4fr] gap-20 border border-primary-800 py-3 px-10 mb-24"
+>
+<div className="relative  scale-[1.15] -translate-x-3">
+  <Image
+    ref={imageRef}
+    src={image}
+    fill
+    className="object-cover"
+    alt={`Cabin ${name}`}
+  />
+</div>
+
+<div>
+  <h3 className="text-accent-100 font-black text-7xl mb-5 translate-x-[-254px] bg-primary-950 p-6 pb-1 w-[150%]">
+    Cabin {name}
+  </h3>
+
+  <p ref={descRef} className="text-lg text-primary-300 mb-10">
+    {" "}
+    <TextExpander>{description} </TextExpander>
+  </p>
+
+  <ul className="flex flex-col gap-4 mb-7" ref={listRef}>
+    <li className="flex gap-3 items-center">
+      <UsersIcon className="h-5 w-5 text-primary-600" />
+      <span className="text-lg">
+        For up to <span className="font-bold">{maxCapacity}</span> guests
+      </span>
+    </li>
+    <li className="flex gap-3 items-center">
+      <MapPinIcon className="h-5 w-5 text-primary-600" />
+      <span className="text-lg">
+        Located in the heart of the{" "}
+        <span className="font-bold">Dolomites</span> (Italy)
+      </span>
+    </li>
+    <li className="flex gap-3 items-center">
+      <EyeSlashIcon className="h-5 w-5 text-primary-600" />
+      <span className="text-lg">
+        Privacy <span className="font-bold">100%</span> guaranteed
+      </span>
+    </li>
+  </ul>
+</div>
+</div> */

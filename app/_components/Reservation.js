@@ -4,6 +4,34 @@ import LoginMessage from "./LoginMessage";
 import ReservationForm from "./ReservationForm";
 import { getBookedDatesByCabinId, getSettings } from "@/app/_lib/data-service";
 
+export default async function Reservation({ cabin }) {
+  const [settings, bookedDates] = await Promise.all([
+    getSettings(),
+    getBookedDatesByCabinId(cabin.id),
+  ]);
+
+  const session = await auth();
+
+  return (
+    <div
+      className="grid grid-cols-1 md:grid-cols-2 border border-primary-800
+    md:rounded-none rounded-md overflow-hidden"
+    >
+      <DateSelector
+        settings={settings}
+        bookedDates={bookedDates}
+        cabin={cabin}
+      />
+      {session?.user ? (
+        <ReservationForm cabin={cabin} user={session.user} />
+      ) : (
+        <LoginMessage />
+      )}
+    </div>
+  );
+}
+
+/* 
 export async function Reservation({ cabin }) {
   const [settings, bookedDates] = await Promise.all([
     getSettings(),
@@ -26,6 +54,4 @@ export async function Reservation({ cabin }) {
       )}
     </div>
   );
-}
-
-export default Reservation;
+} */
