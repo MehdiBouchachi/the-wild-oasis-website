@@ -107,18 +107,23 @@ function Cabin({ cabin }) {
           <TextExpander>{description}</TextExpander>
         </p>
 
-        <ul className="flex flex-col gap-4 mb-6 md:mb-7" ref={listRef}>
-          <li className="flex gap-3 items-center text-md md:text-base">
-            <UsersIcon className="h-5 w-5 text-primary-600" />
+        <ul
+          className="flex flex-col gap-3 sm:gap-4 mb-6 md:mb-7 text-sm sm:text-md md:text-base"
+          ref={listRef}
+        >
+          <li className="flex gap-2 sm:gap-3 items-center">
+            <UsersIcon className="h-4 w-4 sm:h-5 sm:w-5 text-primary-600" />
             For up to <span className="font-bold">{maxCapacity}</span> guests
           </li>
-          <li className="flex gap-3 items-center text-md md:text-base">
-            <MapPinIcon className="h-5 w-5 text-primary-600" />
+
+          <li className="flex gap-2 sm:gap-3 items-center">
+            <MapPinIcon className="h-4 w-4 sm:h-5 sm:w-5 text-primary-600" />
             Located in the heart of the{" "}
             <span className="font-bold">Dolomites</span> (Italy)
           </li>
-          <li className="flex gap-3 items-center text-md md:text-base">
-            <EyeSlashIcon className="h-5 w-5 text-primary-600" />
+
+          <li className="flex gap-2 sm:gap-3 items-center">
+            <EyeSlashIcon className="h-4 w-4 sm:h-5 sm:w-5 text-primary-600" />
             Privacy <span className="font-bold">100%</span> guaranteed
           </li>
         </ul>
